@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Fluig-->
+        <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+        <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+        <script src="/webdesk/vcXMLRPC.js"></script>
+
+        <!--Funcionalidades-->
+        <!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" /> -->
+        <!-- <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>   -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/2.1.7/css/dataTables.dataTables.css" />
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>              
+        
+        <!--React-->
+        <script src="babel.min.js" crossorigin="anonymous"></script>
+        <script src="react.js" crossorigin></script>
+        <script src="react-dom.js" crossorigin></script>
+        <script src="antd.min.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="antd.min.css" />
+        <script src="https://unpkg.com/react-input-mask/dist/react-input-mask.min.js"></script>
+        <script src="moment.min.js"></script>
+
+        <!--Processo-->
+        <link rel="stylesheet" href="Style.css" />
+        <script type="text/babel" src="ReactComponentes.jsx"></script>
+        <script type="text/babel" src="Functions.js"></script>
+        <script type="text/babel" src="Script.js"></script>
+    </head>
+
+    <body>
+        <div class="fluig-style-guide" style="width: 95vw; margin: auto">
+            <form name="form" role="form">
+                <div id="divInfoSolicitacao">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-input">
+                                <label for="coligada">Coligada:</label>
+                                <select name="coligada" id="coligada" class="form-control">
+                                    <option value=""></option>
+                                </select>
+                                <div></div>
+                                <br />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-input">
+                                <label for="codtmv">Tipo de Movimento:</label>
+                                <select name="codtmv" id="codtmv" class="form-control">
+                                    <option value=""></option>
+                                    <option value="1.1.02 - Ordem de Compra">1.1.02 - Ordem de Compra</option>
+                                    <option value="1.1.07 - Ordem de Serviço">1.1.07 - Ordem de Serviço</option>
+                                    <option value="1.1.10 - Ordem de Transporte CTe">1.1.10 - Ordem de Transporte CTe</option>
+                                </select>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="divInfoSolicitacaoAprov">
+                    <div id="divDecisao" style="text-align: center">
+                        <div style="display: inline-block">
+                            <label for="decisaoAprovar" style="margin-right: 2%; padding-top: 2px">Aprovar</label>
+                            <div class="switch switch-success switch-labels">
+                                <input class="switch-input" type="radio" id="decisaoAprovar" name="decisao" value="Aprovar" />
+                                <label class="switch-button switchRedGreen" for="decisaoAprovar">Toggle</label>
+                            </div>
+                        </div>
+                        <div style="display: inline-block">
+                            <label for="decisaoRetornar" style="margin-right: 2%; padding-top: 2px">Retornar</label>
+                            <div class="switch switch-danger switch-labels">
+                                <input class="switch-input" type="radio" id="decisaoRetornar" name="decisao" value="Retornar" />
+                                <label class="switch-button switchRedGreen" for="decisaoRetornar">Toggle</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div id="divCollapse">
+                    <ul id="coltabs" class="nav nav-tabs nav-justified nav-pills" role="tablist" style="padding-bottom: 0px; width: 100%">
+                        <li class="collapse-tab">
+                            <a href="#tabResumo" role="tab" id="atabResumo" data-toggle="tab" aria-expanded="true" class="tab">Resumo</a>
+                        </li>
+                        <li class="collapse-tab active">
+                            <a href="#tabInformacoesIniciais" role="tab" id="atabInformacoesIniciais" data-toggle="tab" aria-expanded="true" class="tab">Informações Iniciais</a>
+                        </li>
+                        <li class="collapse-tab">
+                            <a href="#tabItens" role="tab" id="atabItens" data-toggle="tab" aria-expanded="true" class="tab">Itens</a>
+                        </li>
+                        <li class="collapse-tab">
+                            <a href="#tabMapaCotacao" role="tab" id="atabMapaCotacao" data-toggle="tab" aria-expanded="true" class="tab">Mapa de Cotação</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabInformacoesIniciais"></div>
+                        <div class="tab-pane" id="tabItens">
+                            <div id="divListaProdutos"></div>
+                            <div id="divListaItens"></div>
+                            <div id="divListCotacao"></div>
+                            <div id="App"></div>
+                        </div>
+                        <div class="tab-pane" id="tabMapaCotacao">
+                            <input type="hidden" name="hiddenMapaDeCotacao" id="hiddenMapaDeCotacao" />
+                            <div id="divMapaCotacao"></div>
+                        </div>
+                        <div class="tab-pane" id="tabResumo"></div>
+                    </div>
+                </div>
+                <br />
+                <div id="ResumoOrcamento"></div>
+                <br />
+                <br />
+                <div style="display: none">
+                	<<input type="hidden" name="dataItensSisma" id="dataItensSisma" />
+                    <input type="hidden" name="filial" id="filial" />
+                    <input type="hidden" name="locEstoque" id="locEstoque" />
+                    <input type="hidden" name="comprador" id="comprador" />
+                    <input type="hidden" name="dataEntrega" id="dataEntrega" />
+                    <input type="hidden" name="dtaEntrega" id="dtaEntrega" />
+                    <input type="hidden" name="condicaoPgto" id="condicaoPgto" />
+                    <input type="hidden" name="formaPgto" id="formaPgto" value="009 - Depósito C/C" />
+                    <input type="hidden" name="codTransporte" id="codTransporte" />
+                    <input type="hidden" name="locEntrega" id="locEntrega" />
+                    <input type="hidden" name="locEntrega2" id="locEntrega2" />
+                    <input type="hidden" name="REIDI" id="REIDI" />
+                    <input type="hidden" name="natureza" id="natureza" />
+                    <input type="hidden" name="JustificativaOrcamento" id="JustificativaOrcamento" />
+                    <input type="hidden" name="formMode" id="formMode" />
+                    <input type="hidden" name="atividade" id="atividade" />
+                    <input type="hidden" name="userCode" id="userCode" />
+                    <input type="hidden" name="isMobile" id="isMobile" />
+                    <input type="hidden" name="numProcess" id="numProcess" />
+                    <input type="hidden" name="solicitante" id="solicitante" />
+                    <input type="hidden" name="userComprador" id="userComprador" />
+                    <input type="hidden" name="itens" id="itens" />
+                    <input type="hidden" name="cotacoes" id="cotacoes" />
+                    <input type="hidden" name="MapaCotacaoItens" id="MapaCotacaoItens" />
+                    <input type="hidden" name="movimentos" id="movimentos" />
+                    <input type="hidden" name="idmov" id="idmov" />
+                    <input type="hidden" name="matrizSuperior" id="matrizSuperior" />
+                    <input type="hidden" name="idOrigemRM" id="idOrigemRM" />
+                    <input type="hidden" name="chefeEngenheiroAprov" id="chefeEngenheiroAprov" />
+                    <input type="hidden" name="coordenadorAprov" id="coordenadorAprov" />
+                    <input type="hidden" name="diretorAprov" id="diretorAprov" />
+                    <input type="hidden" name="tpmovDto" id="tpmovDto" />
+                    <input type="hidden" name="idSismaRM" id="idSismaRM" />
+                    <input type="hidden" name="solicitanteNome" id="solicitanteNome" />
+                </div>
+
+                <script>
+                    var beforeSendValidate = function (numState, nextState) {
+                        console.log("beforeSendValida");
+                        var validacao = ValidaAntesDeEnviarAtividade();
+
+                        if (validacao != true) {
+                            throw validacao;
+                        }
+                    };
+                </script>
+            </form>
+        </div>
+    </body>
+</html>

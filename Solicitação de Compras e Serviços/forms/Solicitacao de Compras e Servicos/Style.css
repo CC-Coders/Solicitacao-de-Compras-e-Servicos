@@ -1,0 +1,255 @@
+.tab {
+    border: black 1px solid !important;
+    border-radius: 4px 4px 0 0 !important;
+}
+
+.fluig-style-guide .nav-tabs.nav-justified > li.in > a {
+    background-color: #58595b;
+    color: #fff;
+}
+
+.tab-content {
+    border: black solid 1px;
+    width: fit-content;
+    min-width: 100%;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.after_modal_appended {
+    position: relative;
+}
+
+.block {
+    width: 100%;
+    height: 200px;
+}
+
+.modal,
+.modal-backdrop {
+    position: absolute !important;
+}
+
+.marginAuto {
+    margin: auto;
+}
+
+.btnRemoverItem {
+    float: right;
+}
+
+.detailsShow {
+    background: url("details_open.png") no-repeat center;
+    cursor: pointer;
+    width: 30px;
+}
+.detailsHide {
+    background: url("details_close.png") no-repeat center;
+    cursor: pointer;
+    width: 30px;
+}
+
+.details {
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.fit-content {
+    width: fit-content;
+}
+
+.select2.select2-container .select2-selection {
+    height: 34px;
+}
+
+.labelFullWidth {
+    width: 100%;
+}
+
+.has-error {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    display: inline-block;
+    border: 1px red solid !important;
+    color: black !important;
+}
+
+.tableRateioDepartamento tbody tr td:last {
+    text-align: center;
+}
+
+.select2-container {
+    width: 100% !important;
+    padding: 0;
+}
+
+.btnAdicionarRateio {
+    float: right;
+}
+
+.row.display-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.fluig-style-guide .form-control[readonly] {
+    color: #555 !important;
+}
+
+#divMapaCotacao {
+    width: 94vw;
+    height: 70vh;
+    overflow: auto;
+}
+
+
+.tableCellFixed{
+    position:sticky; left:0; z-index:1; background-color:white;
+}
+
+.tCellOdd {
+    background-color: whitesmoke !important;
+}
+
+.success {
+    color: white !important;
+}
+/*
+#decisaoAprovar:not(:checked)+label.switchRedGreen{
+    background-color: red;
+}
+
+#decisaoRetornar:not(:checked)+label.switchRedGreen{
+    background-color: red;
+}*/
+
+.fluig-style-guide .switch.switch-labels .switch-input:checked + .switch-button:before {
+    content: "" !important;
+}
+
+.fluig-style-guide .switch.switch-labels .switch-button:before {
+    content: "" !important;
+}
+
+.divColumn .card .card-header,
+.divColumn .card .card-footer {
+    padding: 3px 0px;
+    background-color: #dfdfe1a6;
+}
+
+.divColumn .card {
+    border: 1px solid #bfbfbf !important;
+}
+
+.divColumn .card-body {
+    padding: 4px 10px !important;
+}
+
+.panelRateio {
+    padding: 8px 12px !important;
+}
+
+.divColumn .panelRateio th,
+.divColumn .panelRateio td {
+    padding: 8px 10px !important;
+}
+
+.resumoMovimento .panel-body,
+.resumoMovimento .card-footer {
+    padding: 8px 12px !important;
+}
+
+.panel-heading span,
+.panel-heading b {
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 600px) {
+    table {
+        border: 0;
+    }
+    table caption {
+        font-size: 1.3em;
+    }
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+    table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: 0.625em;
+    }
+    table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: 0.8em;
+        text-align: right;
+    }
+    table td::before {
+        /*
+	  * aria-label has no advantage, it won't be read inside a table
+	  content: attr(aria-label);
+	  */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    table td:last-child {
+        border-bottom: 0;
+    }
+
+    .panelRateio tbody > tr > td:nth-of-type(1):before {
+        content: "Departamento";
+    }
+    .panelRateio tbody > tr > td:nth-of-type(2):before {
+        content: "Percentual";
+    }
+    .panelRateio tbody > tr > td:nth-of-type(3):before {
+        content: "Valor";
+    }
+}
+
+.countItem {
+    width: fit-content;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 50px;
+}
+
+.coltabs {
+    padding-bottom: 0px;
+    width: 100%;
+}
+
+.with-suffix {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.with-suffix::after {
+    content: attr(suffix);
+}
+
+.with-suffix input {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    flex: 1;
+    min-width: 0;
+
+    border: none;
+    background: none;
+}
