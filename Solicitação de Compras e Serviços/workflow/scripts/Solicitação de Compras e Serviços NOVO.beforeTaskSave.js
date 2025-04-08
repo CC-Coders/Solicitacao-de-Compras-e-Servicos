@@ -375,6 +375,7 @@ function montaXML(cotacao) {
     xml += "</TMOVCOMPL>";
     xml += "</MovMovimento> ";
 
+    xml = xml.split("&").join("&amp;");
     log.info("XML: " + xml);
 
 
