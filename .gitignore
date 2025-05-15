@@ -1,3 +1,4 @@
 /.metadata
 com.totvs.tds.ecm.dataservers
 Solicitação de Compras e Serviços/workflow/.resources/CASTILHO-PRODUCAO.ws.cache
+*.cache
