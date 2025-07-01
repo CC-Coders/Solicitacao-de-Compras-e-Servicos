@@ -111,6 +111,9 @@ $(document).ready(function () {
 
                 ReactDOM.render(React.createElement(ResumoOrcamento), document.querySelector('#ResumoOrcamento'));
                 ReactDOM.render(React.createElement(AprovacaoRoot), document.querySelector('#tabResumo'));
+                $("#atabResumo").closest("li").addClass("active");
+                $("#tabResumo").addClass("active");
+
             }, 500);
         }
 
