@@ -442,12 +442,8 @@ function BuscaAprovadores(total) {
     var dir = "";
 
     if ($("#comprador").val() == "Controladoria" && $("#locEstoque").val() == "001 - Matriz Curitiba") {
-        eng = "claudio";
-        if (total>=20000) {
-            coord="padilha";
-        }
+        eng="padilha";
         stopLoop = true;
-
 
         $("#chefeEngenheiroAprov").val(eng);
         $("#coordenadorAprov").val(coord);
