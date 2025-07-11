@@ -362,6 +362,12 @@ function montaXML(cotacao) {
                 "Empresa co-habilitada ao Regime Especial de Incentivos para o Desenvolvimento da Infraestrutura (REIDI), " +
                 "com suspensão do pagamento da Contribuição para o PIS/Pasep e da Cofins, através do Ato Declaratório Executivo DRF/SOR nº 4, de 7° de Janeiro de 2025." +
                 "</TEXTOREIDI>";
+        } else if (hAPI.getCardValue("locEstoque").split(" - ")[1] == "Obra MRS Campo Grande") {
+            xml +=
+                "<TEXTOREIDI>" +
+                "Venda efetuada com suspensão da exigibilidade da Contribuição para o PIS/PASEP e da COFINS, conforme Portaria do Ministério dos Transportes nº 779 e " +
+                "Ato Declaratório Executivo nº 358, de 01 de abril de 2025, publicado no Diário Oficial da União nº 63, de 02 de abril de 2025." +
+                "</TEXTOREIDI>";
         } else {
             xml +=
                 "<TEXTOREIDI>" +

@@ -442,12 +442,8 @@ function BuscaAprovadores(total) {
     var dir = "";
 
     if ($("#comprador").val() == "Controladoria" && $("#locEstoque").val() == "001 - Matriz Curitiba") {
-        eng = "claudio";
-        if (total>=20000) {
-            coord="padilha";
-        }
+        eng="padilha";
         stopLoop = true;
-
 
         $("#chefeEngenheiroAprov").val(eng);
         $("#coordenadorAprov").val(coord);
@@ -1569,7 +1565,7 @@ function BuscaEmailUsuario(usuario) {
 
 function VerificaSeLocalDeEstoqueTemREIDI(locEstoque) {
     if (locEstoque == "Obra Conserva Echaporã" || locEstoque == "Obra Duplicação Oriente" || locEstoque == "Obra Parapuã" || locEstoque == "Obra COFCO" || 
-    		locEstoque == "Obra Paraguaçu Paulista" || locEstoque == "Obra Conserva Maracaí" || locEstoque == "Obra MRS Pátios Vale do Paraíba") {
+    		locEstoque == "Obra Paraguaçu Paulista" || locEstoque == "Obra Conserva Maracaí" || locEstoque == "Obra MRS Pátios Vale do Paraíba" || locEstoque == "Obra MRS Campo Grande") {
         return true;
     }
     else {
