@@ -1565,7 +1565,7 @@ function BuscaEmailUsuario(usuario) {
 
 function VerificaSeLocalDeEstoqueTemREIDI(locEstoque) {
     if (locEstoque == "Obra Conserva Echaporã" || locEstoque == "Obra Duplicação Oriente" || locEstoque == "Obra Parapuã" || locEstoque == "Obra COFCO" || 
-    		locEstoque == "Obra Paraguaçu Paulista" || locEstoque == "Obra Conserva Maracaí" || locEstoque == "Obra MRS Pátios Vale do Paraíba") {
+    		locEstoque == "Obra Paraguaçu Paulista" || locEstoque == "Obra Conserva Maracaí" || locEstoque == "Obra MRS Pátios Vale do Paraíba" || locEstoque == "Obra MRS Campo Grande") {
         return true;
     }
     else {

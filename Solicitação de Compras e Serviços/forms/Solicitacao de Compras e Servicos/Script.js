@@ -173,7 +173,7 @@ $(document).ready(function () {
             $("#divCollapse").hide();
             $("#codtmv").closest(".form-input").show();
         }
-        else if($("#coligada").val() != "1 - CONSTRUTORA CASTILHO" && $("#coligada").val() != "12 - DROMOS INFRA" && $("#codtmv").val() == "1.1.10 - Ordem de Transporte CTe"){
+        else if($("#coligada").val() != "1 - CONSTRUTORA CASTILHO" && $("#coligada").val() != "12 - DROMOS INFRA" && $("#coligada").val() != "13 - EPYA" && $("#codtmv").val() == "1.1.10 - Ordem de Transporte CTe"){
             $("#divCollapse").hide();
             $("#codtmv").val("");
             FLUIGC.toast({
