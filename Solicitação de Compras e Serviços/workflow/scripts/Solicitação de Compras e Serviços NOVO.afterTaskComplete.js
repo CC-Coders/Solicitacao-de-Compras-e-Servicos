@@ -83,8 +83,7 @@ function EnviarEmail() {
     var subject = '';
     var mensagem = '';
 
-    if (decisao == "Aprovar") // Aprovar: SIM
-    {
+    if (decisao == "Aprovar"){ // Aprovar: SIM
         subject = "[FLUIG] Pedido de compra aprovado!";
         mensagem = '<span class="glyphicon glyphicon-thumbs-up"></span> O pedido de compra que você realizou foi <font color="green"><b>aprovado</b></font> pelo usuário <b>' + usuarioAprovador + '.</b>';
     }
@@ -93,49 +92,95 @@ function EnviarEmail() {
         mensagem = '<span class="glyphicon glyphicon-thumbs-down"></span> O pedido de compra que você realizou foi <font color="red"><b>cancelado</b></font> pelo usuário <b>' + usuarioAprovador + '.</b>';
     }
 
-    var param = new java.util.HashMap();
-    param.put("SERVER_URL", 'http://fluig.castilho.com.br:1010');//Prod
-    //param.put("SERVER_URL", 'http://homologacao.castilho.com.br:2020');//homolog
-    param.put("TENANT_ID", "1");
-    param.put("USUARIO_APROVADOR", usuarioAprovador);
-    param.put("COMPRADOR", comprador);
-    param.put("SOLICITANTE", solicitante);
-    param.put("COLIGADA", codColigada);
-    param.put("FILIAL", codFilial);
-    param.put("LOCALESTOQUE", localEstoque);
-    param.put("DATA_CADASTRO", data);
-    param.put("VALOR", valor);
-    param.put("TIPOMOV", tipoMov);
-    param.put("MENSAGEM", mensagem);
-    param.put("URL", urlProcesso);
-    param.put("subject", subject);
+    var param = {};
+    param.SERVER_URL = 'http://fluig.castilho.com.br:1010';//Prod
+    param.TENANT_ID = "1" + "";
+    param.USUARIO_APROVADOR = usuarioAprovador + "";
+    param.COMPRADOR = comprador + "";
+    param.SOLICITANTE = solicitante + "";
+    param.COLIGADA = codColigada + "";
+    param.FILIAL = codFilial + "";
+    param.LOCALESTOQUE = localEstoque + "";
+    param.DATA_CADASTRO = data + "";
+    param.VALOR = valor + "";
+    param.TIPOMOV = tipoMov + "";
+    param.MENSAGEM = mensagem + "";
+    param.URL = urlProcesso + "";
+    param.subject = subject + "";
 
-    var destinatarios = new java.util.ArrayList();
-
-	if (solicitante != comprador) {
-		destinatarios.add(solicitante);
-		destinatarios.add(comprador);
-	} else {
-		destinatarios.add(solicitante);
-	}
-
-    var anexos = new java.util.ArrayList();
+    var anexos = [];
     var docs = hAPI.listAttachments();
     for (var i = 0; i < docs.size(); i++) {
         var doc = docs.get(i);
-        var anexo = new java.util.HashMap();
+        var anexo = {};
 
-        anexo.put("link", fluigAPI.getDocumentService().getDownloadURL(doc.getDocumentId()));
-        anexo.put("description", doc.getDocumentDescription());
+        anexo.link = fluigAPI.getDocumentService().getDownloadURL(doc.getDocumentId())  + "";
+        anexo.description = doc.getDocumentDescription()  + "";
 
-        anexos.add(anexo);
+        anexos.push(anexo);
     }
 
-    param.put("anexos", anexos);
+    param.anexos = anexos;
 
-    notifier.notify("FLUIG", "TPL_APROVACAO_COMPRAS", param, destinatarios, "text/html");
+
+    var destinatarios = "";
+	if (solicitante != comprador) {
+		destinatarios += BuscaEmailUsuario(solicitante)+"; ";
+		destinatarios += BuscaEmailUsuario(comprador)+"; ";
+	} else {
+		destinatarios += BuscaEmailUsuario(solicitante);
+	}
+
+
+    var data = {
+        "to": destinatarios,
+        "from": "fluig@construtoracastilho.com.br", //Prod
+        "subject": subject, //   subject
+        "templateId": "TPL_APROVACAO_COMPRAS", // Email template Id previously registered
+        "dialectId": "pt_BR", //Email dialect , if not informed receives pt_BR , email dialect ("pt_BR", "en_US", "es")
+        "param": param
+    };
+
+
+    var clientService = fluigAPI.getAuthorizeClientService();
+    var data = {
+        companyId: getValue("WKCompany") + '',
+        serviceCode: 'ServicoFluig',
+        endpoint: '/api/public/alert/customEmailSender',
+        method: 'post',
+        params: data,
+        options: {
+            encoding: 'UTF-8',
+            mediaType: 'application/json',
+            useSSL: true
+        },
+        headers: {
+            "Content-Type": 'application/json;charset=UTF-8'
+        }
+    };
+
+
+    var vo = clientService.invoke(JSON.stringify(data));
+
+    if (vo.getResult() == null || vo.getResult().isEmpty()) {
+        throw new Exception("Retorno está vazio");
+    } else {
+        return vo.getResult();
+    }
 }
 
 function FormataValorParaMoeda(valor) {
     return 'R$ ' + valor.toFixed(2).replace('.', ',');
+}
+
+// Utils
+function BuscaEmailUsuario(usuario) {
+    var ds = DatasetFactory.getDataset("colleague", null, [DatasetFactory.createConstraint("colleagueId", usuario, usuario, ConstraintType.MUST)], null);
+
+	if (ds.values.length > 0) {
+		return ds.getValue(0, "mail") + "; ";
+	}
+	else{
+		return "";
+	}
 }
