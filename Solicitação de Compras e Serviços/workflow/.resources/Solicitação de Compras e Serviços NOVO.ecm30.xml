@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Compras e Serviços (NOVO)</processId>
-      <version>36</version>
+      <version>41</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>604119</formId>
@@ -630,7 +630,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>1</expressionOrder>
-        <version>36</version>
+        <version>41</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -643,7 +643,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>2</expressionOrder>
-        <version>36</version>
+        <version>41</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -656,7 +656,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>3</expressionOrder>
-        <version>36</version>
+        <version>41</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -670,7 +670,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>1</expressionOrder>
-        <version>36</version>
+        <version>41</version>
         <sequence>17</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -683,7 +683,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>2</expressionOrder>
-        <version>36</version>
+        <version>41</version>
         <sequence>17</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -696,7 +696,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>1</expressionOrder>
-        <version>36</version>
+        <version>41</version>
         <sequence>18</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -709,7 +709,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>2</expressionOrder>
-        <version>36</version>
+        <version>41</version>
         <sequence>18</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -722,7 +722,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>3</expressionOrder>
-        <version>36</version>
+        <version>41</version>
         <sequence>18</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -735,7 +735,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>1</expressionOrder>
-        <version>36</version>
+        <version>41</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -748,7 +748,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>2</expressionOrder>
-        <version>36</version>
+        <version>41</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -761,7 +761,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>3</expressionOrder>
-        <version>36</version>
+        <version>41</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -774,7 +774,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>1</expressionOrder>
-        <version>36</version>
+        <version>41</version>
         <sequence>20</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -787,7 +787,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>2</expressionOrder>
-        <version>36</version>
+        <version>41</version>
         <sequence>20</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -1210,146 +1210,191 @@
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <version>1</version>
       </workflowProcessEventPK>
-      <eventDescription>function afterTaskComplete(colleagueId, nextSequenceId, userList) {&#xd;
-    var atividade = getValue(&quot;WKNumState&quot;);&#xd;
-&#xd;
-    if (nextSequenceId != atividade) {&#xd;
-        if (hAPI.getCardValue(&quot;decisao&quot;) == &quot;Aprovar&quot;) {&#xd;
-            if (atividade == 11 &amp;&amp; hAPI.getCardValue(&quot;coordenadorAprov&quot;) == &quot;&quot;) {&#xd;
-                var movimentos = JSON.parse(hAPI.getCardValue(&quot;movimentos&quot;));&#xd;
-&#xd;
-                for (var i = 0; i &lt; movimentos.length; i++) {&#xd;
-                    BuscaRelatorio(movimentos[i].IDMOV, hAPI.getCardValue(&quot;coligada&quot;).split(&quot; - &quot;)[0]);&#xd;
-                }&#xd;
-                EnviarEmail();&#xd;
-            }&#xd;
-            else if (atividade == 12 &amp;&amp; hAPI.getCardValue(&quot;diretorAprov&quot;) == &quot;&quot;) {&#xd;
-                var movimentos = JSON.parse(hAPI.getCardValue(&quot;movimentos&quot;));&#xd;
-&#xd;
-                for (var i = 0; i &lt; movimentos.length; i++) {&#xd;
-                    BuscaRelatorio(movimentos[i].IDMOV, hAPI.getCardValue(&quot;coligada&quot;).split(&quot; - &quot;)[0]);&#xd;
-                }&#xd;
-                EnviarEmail();&#xd;
-            }&#xd;
-            else if (atividade == 13) {&#xd;
-                var movimentos = JSON.parse(hAPI.getCardValue(&quot;cotacoes&quot;));&#xd;
-&#xd;
-                for (var i = 0; i &lt; movimentos.length; i++) {&#xd;
-                    BuscaRelatorio(movimentos[i].IDMOV, hAPI.getCardValue(&quot;coligada&quot;).split(&quot; - &quot;)[0]);&#xd;
-                }&#xd;
-                EnviarEmail();&#xd;
-            }&#xd;
-        }&#xd;
-    }&#xd;
-}&#xd;
-&#xd;
-function BuscaRelatorio(IDMOV, CODCOLIGADA) {&#xd;
-    var constraints = [&#xd;
-        DatasetFactory.createConstraint(&quot;IDMOV&quot;, IDMOV, IDMOV, ConstraintType.MUST),&#xd;
-        DatasetFactory.createConstraint(&quot;CODCOLIGADA&quot;, CODCOLIGADA, CODCOLIGADA, ConstraintType.MUST)&#xd;
-    ];&#xd;
-    var wsReport = DatasetFactory.getDataset(&quot;relatoriosRM&quot;, null, constraints, null);&#xd;
-&#xd;
-    // seta o formato de abertura da string base 64 retornada pelo Web Service do RM Reports para PDF&#xd;
-    if (wsReport.values[0][0] == true) {&#xd;
-        var resultado = wsReport.values[0][1];&#xd;
-        var constraints = [&#xd;
-            DatasetFactory.createConstraint(&quot;processo&quot;, getValue(&quot;WKNumProces&quot;), getValue(&quot;WKNumProces&quot;), ConstraintType.MUST),&#xd;
-            DatasetFactory.createConstraint(&quot;idRM&quot;, IDMOV, IDMOV, ConstraintType.MUST),&#xd;
-            DatasetFactory.createConstraint(&quot;conteudo&quot;, resultado, resultado, ConstraintType.MUST)&#xd;
-        ];&#xd;
-&#xd;
-        var res = DatasetFactory.getDataset(&quot;CriacaoDocumentosFluig&quot;, null, constraints, null);&#xd;
-&#xd;
-        if (!res || res == &quot;&quot; || res == null) {&#xd;
-            throw &quot;Houve um erro na comunicação com o webservice de criação de documentos. Tente novamente!&quot;;&#xd;
-        }&#xd;
-        else {&#xd;
-            if (res.values[0][0] == &quot;false&quot;) {&#xd;
-                throw &quot;Erro ao criar arquivo. Favor entrar em contato com o administrador do sistema. Mensagem: &quot; + res.values[0][1];&#xd;
-            }&#xd;
-            else {&#xd;
-                log.info(&quot;### GEROU docID = &quot; + res.values[0][1]);&#xd;
-                hAPI.attachDocument(res.values[0][1]);&#xd;
-            }&#xd;
-        }&#xd;
-    }&#xd;
-    else {&#xd;
-        return false;&#xd;
-    }&#xd;
-}&#xd;
-&#xd;
-function EnviarEmail() {&#xd;
-    var usuarioAprovador = getValue(&quot;WKUser&quot;);&#xd;
-    var comprador = hAPI.getCardValue(&apos;userComprador&apos;);&#xd;
-    var solicitante = hAPI.getCardValue(&apos;solicitante&apos;);&#xd;
-    var decisao = hAPI.getCardValue(&quot;decisao&quot;);&#xd;
-    var codColigada = hAPI.getCardValue(&apos;coligada&apos;);&#xd;
-    var codFilial = hAPI.getCardValue(&apos;filial&apos;);&#xd;
-    var localEstoque = hAPI.getCardValue(&apos;locEstoque&apos;);&#xd;
-    var data = hAPI.getCardValue(&apos;dataEntrega&apos;);&#xd;
-    var tipoMov = hAPI.getCardValue(&apos;codtmv&apos;);&#xd;
-    var valor = FormataValorParaMoeda(CalculaTotalSolicitacao(), 2, true);&#xd;
-&#xd;
-    var urlProcesso = &apos;http://fluig.castilho.com.br:1010/portal/p/1/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID=&apos; + hAPI.getCardValue(&quot;numProcess&quot;);&#xd;
-    var subject = &apos;&apos;;&#xd;
-    var mensagem = &apos;&apos;;&#xd;
-&#xd;
-    if (decisao == &quot;Aprovar&quot;) // Aprovar: SIM&#xd;
-    {&#xd;
-        subject = &quot;[FLUIG] Pedido de compra aprovado!&quot;;&#xd;
-        mensagem = &apos;&lt;span class=&quot;glyphicon glyphicon-thumbs-up&quot;&gt;&lt;/span&gt; O pedido de compra que você realizou foi &lt;font color=&quot;green&quot;&gt;&lt;b&gt;aprovado&lt;/b&gt;&lt;/font&gt; pelo usuário &lt;b&gt;&apos; + usuarioAprovador + &apos;.&lt;/b&gt;&apos;;&#xd;
-    }&#xd;
-    else {&#xd;
-        subject = &quot;[FLUIG] Pedido de compra cancelado!&quot;;&#xd;
-        mensagem = &apos;&lt;span class=&quot;glyphicon glyphicon-thumbs-down&quot;&gt;&lt;/span&gt; O pedido de compra que você realizou foi &lt;font color=&quot;red&quot;&gt;&lt;b&gt;cancelado&lt;/b&gt;&lt;/font&gt; pelo usuário &lt;b&gt;&apos; + usuarioAprovador + &apos;.&lt;/b&gt;&apos;;&#xd;
-    }&#xd;
-&#xd;
-    var param = new java.util.HashMap();&#xd;
-    param.put(&quot;SERVER_URL&quot;, &apos;http://fluig.castilho.com.br:1010&apos;);//Prod&#xd;
-    //param.put(&quot;SERVER_URL&quot;, &apos;http://homologacao.castilho.com.br:2020&apos;);//homolog&#xd;
-    param.put(&quot;TENANT_ID&quot;, &quot;1&quot;);&#xd;
-    param.put(&quot;USUARIO_APROVADOR&quot;, usuarioAprovador);&#xd;
-    param.put(&quot;COMPRADOR&quot;, comprador);&#xd;
-    param.put(&quot;SOLICITANTE&quot;, solicitante);&#xd;
-    param.put(&quot;COLIGADA&quot;, codColigada);&#xd;
-    param.put(&quot;FILIAL&quot;, codFilial);&#xd;
-    param.put(&quot;LOCALESTOQUE&quot;, localEstoque);&#xd;
-    param.put(&quot;DATA_CADASTRO&quot;, data);&#xd;
-    param.put(&quot;VALOR&quot;, valor);&#xd;
-    param.put(&quot;TIPOMOV&quot;, tipoMov);&#xd;
-    param.put(&quot;MENSAGEM&quot;, mensagem);&#xd;
-    param.put(&quot;URL&quot;, urlProcesso);&#xd;
-    param.put(&quot;subject&quot;, subject);&#xd;
-&#xd;
-    var destinatarios = new java.util.ArrayList();&#xd;
-&#xd;
-	if (solicitante != comprador) {&#xd;
-		destinatarios.add(solicitante);&#xd;
-		destinatarios.add(comprador);&#xd;
-	} else {&#xd;
-		destinatarios.add(solicitante);&#xd;
-	}&#xd;
-&#xd;
-    var anexos = new java.util.ArrayList();&#xd;
-    var docs = hAPI.listAttachments();&#xd;
-    for (var i = 0; i &lt; docs.size(); i++) {&#xd;
-        var doc = docs.get(i);&#xd;
-        var anexo = new java.util.HashMap();&#xd;
-&#xd;
-        anexo.put(&quot;link&quot;, fluigAPI.getDocumentService().getDownloadURL(doc.getDocumentId()));&#xd;
-        anexo.put(&quot;description&quot;, doc.getDocumentDescription());&#xd;
-&#xd;
-        anexos.add(anexo);&#xd;
-    }&#xd;
-&#xd;
-    param.put(&quot;anexos&quot;, anexos);&#xd;
-&#xd;
-    notifier.notify(&quot;FLUIG&quot;, &quot;TPL_APROVACAO_COMPRAS&quot;, param, destinatarios, &quot;text/html&quot;);&#xd;
-}&#xd;
-&#xd;
-function FormataValorParaMoeda(valor) {&#xd;
-    return &apos;R$ &apos; + valor.toFixed(2).replace(&apos;.&apos;, &apos;,&apos;);&#xd;
+      <eventDescription>function afterTaskComplete(colleagueId, nextSequenceId, userList) {
+    var atividade = getValue(&quot;WKNumState&quot;);
+
+    if (nextSequenceId != atividade) {
+        if (hAPI.getCardValue(&quot;decisao&quot;) == &quot;Aprovar&quot;) {
+            if (atividade == 11 &amp;&amp; hAPI.getCardValue(&quot;coordenadorAprov&quot;) == &quot;&quot;) {
+                var movimentos = JSON.parse(hAPI.getCardValue(&quot;movimentos&quot;));
+
+                for (var i = 0; i &lt; movimentos.length; i++) {
+                    BuscaRelatorio(movimentos[i].IDMOV, hAPI.getCardValue(&quot;coligada&quot;).split(&quot; - &quot;)[0]);
+                }
+                EnviarEmail();
+            }
+            else if (atividade == 12 &amp;&amp; hAPI.getCardValue(&quot;diretorAprov&quot;) == &quot;&quot;) {
+                var movimentos = JSON.parse(hAPI.getCardValue(&quot;movimentos&quot;));
+
+                for (var i = 0; i &lt; movimentos.length; i++) {
+                    BuscaRelatorio(movimentos[i].IDMOV, hAPI.getCardValue(&quot;coligada&quot;).split(&quot; - &quot;)[0]);
+                }
+                EnviarEmail();
+            }
+            else if (atividade == 13) {
+                var movimentos = JSON.parse(hAPI.getCardValue(&quot;cotacoes&quot;));
+
+                for (var i = 0; i &lt; movimentos.length; i++) {
+                    BuscaRelatorio(movimentos[i].IDMOV, hAPI.getCardValue(&quot;coligada&quot;).split(&quot; - &quot;)[0]);
+                }
+                EnviarEmail();
+            }
+        }
+    }
+}
+
+function BuscaRelatorio(IDMOV, CODCOLIGADA) {
+    var constraints = [
+        DatasetFactory.createConstraint(&quot;IDMOV&quot;, IDMOV, IDMOV, ConstraintType.MUST),
+        DatasetFactory.createConstraint(&quot;CODCOLIGADA&quot;, CODCOLIGADA, CODCOLIGADA, ConstraintType.MUST)
+    ];
+    var wsReport = DatasetFactory.getDataset(&quot;relatoriosRM&quot;, null, constraints, null);
+
+    // seta o formato de abertura da string base 64 retornada pelo Web Service do RM Reports para PDF
+    if (wsReport.values[0][0] == true) {
+        var resultado = wsReport.values[0][1];
+        var constraints = [
+            DatasetFactory.createConstraint(&quot;processo&quot;, getValue(&quot;WKNumProces&quot;), getValue(&quot;WKNumProces&quot;), ConstraintType.MUST),
+            DatasetFactory.createConstraint(&quot;idRM&quot;, IDMOV, IDMOV, ConstraintType.MUST),
+            DatasetFactory.createConstraint(&quot;conteudo&quot;, resultado, resultado, ConstraintType.MUST)
+        ];
+
+        var res = DatasetFactory.getDataset(&quot;CriacaoDocumentosFluig&quot;, null, constraints, null);
+
+        if (!res || res == &quot;&quot; || res == null) {
+            throw &quot;Houve um erro na comunicação com o webservice de criação de documentos. Tente novamente!&quot;;
+        }
+        else {
+            if (res.values[0][0] == &quot;false&quot;) {
+                throw &quot;Erro ao criar arquivo. Favor entrar em contato com o administrador do sistema. Mensagem: &quot; + res.values[0][1];
+            }
+            else {
+                log.info(&quot;### GEROU docID = &quot; + res.values[0][1]);
+                hAPI.attachDocument(res.values[0][1]);
+            }
+        }
+    }
+    else {
+        return false;
+    }
+}
+
+function EnviarEmail() {
+    var usuarioAprovador = getValue(&quot;WKUser&quot;);
+    var comprador = hAPI.getCardValue(&apos;userComprador&apos;);
+    var solicitante = hAPI.getCardValue(&apos;solicitante&apos;);
+    var decisao = hAPI.getCardValue(&quot;decisao&quot;);
+    var codColigada = hAPI.getCardValue(&apos;coligada&apos;);
+    var codFilial = hAPI.getCardValue(&apos;filial&apos;);
+    var localEstoque = hAPI.getCardValue(&apos;locEstoque&apos;);
+    var data = hAPI.getCardValue(&apos;dataEntrega&apos;);
+    var tipoMov = hAPI.getCardValue(&apos;codtmv&apos;);
+    var valor = FormataValorParaMoeda(CalculaTotalSolicitacao(), 2, true);
+
+    var urlProcesso = &apos;http://fluig.castilho.com.br:1010/portal/p/1/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID=&apos; + hAPI.getCardValue(&quot;numProcess&quot;);
+    var subject = &apos;&apos;;
+    var mensagem = &apos;&apos;;
+
+    if (decisao == &quot;Aprovar&quot;){ // Aprovar: SIM
+        subject = &quot;[FLUIG] Pedido de compra aprovado!&quot;;
+        mensagem = &apos;&lt;span class=&quot;glyphicon glyphicon-thumbs-up&quot;&gt;&lt;/span&gt; O pedido de compra que você realizou foi &lt;font color=&quot;green&quot;&gt;&lt;b&gt;aprovado&lt;/b&gt;&lt;/font&gt; pelo usuário &lt;b&gt;&apos; + usuarioAprovador + &apos;.&lt;/b&gt;&apos;;
+    }
+    else {
+        subject = &quot;[FLUIG] Pedido de compra cancelado!&quot;;
+        mensagem = &apos;&lt;span class=&quot;glyphicon glyphicon-thumbs-down&quot;&gt;&lt;/span&gt; O pedido de compra que você realizou foi &lt;font color=&quot;red&quot;&gt;&lt;b&gt;cancelado&lt;/b&gt;&lt;/font&gt; pelo usuário &lt;b&gt;&apos; + usuarioAprovador + &apos;.&lt;/b&gt;&apos;;
+    }
+
+    var param = {};
+    param.SERVER_URL = &apos;http://fluig.castilho.com.br:1010&apos;;//Prod
+    param.TENANT_ID = &quot;1&quot; + &quot;&quot;;
+    param.USUARIO_APROVADOR = usuarioAprovador + &quot;&quot;;
+    param.COMPRADOR = comprador + &quot;&quot;;
+    param.SOLICITANTE = solicitante + &quot;&quot;;
+    param.COLIGADA = codColigada + &quot;&quot;;
+    param.FILIAL = codFilial + &quot;&quot;;
+    param.LOCALESTOQUE = localEstoque + &quot;&quot;;
+    param.DATA_CADASTRO = data + &quot;&quot;;
+    param.VALOR = valor + &quot;&quot;;
+    param.TIPOMOV = tipoMov + &quot;&quot;;
+    param.MENSAGEM = mensagem + &quot;&quot;;
+    param.URL = urlProcesso + &quot;&quot;;
+    param.subject = subject + &quot;&quot;;
+
+    var anexos = [];
+    var docs = hAPI.listAttachments();
+    for (var i = 0; i &lt; docs.size(); i++) {
+        var doc = docs.get(i);
+        var anexo = {};
+
+        anexo.link = fluigAPI.getDocumentService().getDownloadURL(doc.getDocumentId())  + &quot;&quot;;
+        anexo.description = doc.getDocumentDescription()  + &quot;&quot;;
+
+        anexos.push(anexo);
+    }
+
+    param.anexos = anexos;
+
+
+    var destinatarios = &quot;&quot;;
+	if (solicitante != comprador) {
+		destinatarios += BuscaEmailUsuario(solicitante)+&quot;; &quot;;
+		destinatarios += BuscaEmailUsuario(comprador)+&quot;; &quot;;
+	} else {
+		destinatarios += BuscaEmailUsuario(solicitante);
+	}
+
+
+    var data = {
+        &quot;to&quot;: destinatarios,
+        &quot;from&quot;: &quot;fluig@construtoracastilho.com.br&quot;, //Prod
+        &quot;subject&quot;: subject, //   subject
+        &quot;templateId&quot;: &quot;TPL_APROVACAO_COMPRAS&quot;, // Email template Id previously registered
+        &quot;dialectId&quot;: &quot;pt_BR&quot;, //Email dialect , if not informed receives pt_BR , email dialect (&quot;pt_BR&quot;, &quot;en_US&quot;, &quot;es&quot;)
+        &quot;param&quot;: param
+    };
+
+
+    var clientService = fluigAPI.getAuthorizeClientService();
+    var data = {
+        companyId: getValue(&quot;WKCompany&quot;) + &apos;&apos;,
+        serviceCode: &apos;ServicoFluig&apos;,
+        endpoint: &apos;/api/public/alert/customEmailSender&apos;,
+        method: &apos;post&apos;,
+        params: data,
+        options: {
+            encoding: &apos;UTF-8&apos;,
+            mediaType: &apos;application/json&apos;,
+            useSSL: true
+        },
+        headers: {
+            &quot;Content-Type&quot;: &apos;application/json;charset=UTF-8&apos;
+        }
+    };
+
+
+    var vo = clientService.invoke(JSON.stringify(data));
+
+    if (vo.getResult() == null || vo.getResult().isEmpty()) {
+        throw new Exception(&quot;Retorno está vazio&quot;);
+    } else {
+        return vo.getResult();
+    }
+}
+
+function FormataValorParaMoeda(valor) {
+    return &apos;R$ &apos; + valor.toFixed(2).replace(&apos;.&apos;, &apos;,&apos;);
+}
+
+// Utils
+function BuscaEmailUsuario(usuario) {
+    var ds = DatasetFactory.getDataset(&quot;colleague&quot;, null, [DatasetFactory.createConstraint(&quot;colleagueId&quot;, usuario, usuario, ConstraintType.MUST)], null);
+
+	if (ds.values.length &gt; 0) {
+		return ds.getValue(0, &quot;mail&quot;) + &quot;; &quot;;
+	}
+	else{
+		return &quot;&quot;;
+	}
 }</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
@@ -1359,135 +1404,135 @@ function FormataValorParaMoeda(valor) {&#xd;
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <version>1</version>
       </workflowProcessEventPK>
-      <eventDescription>function beforeCancelProcess(colleagueId, processId) {&#xd;
-    var movimentos = hAPI.getCardValue(&quot;movimentos&quot;);&#xd;
-    if (movimentos != &quot;&quot;) {&#xd;
-        movimentos = JSON.parse(movimentos);&#xd;
-&#xd;
-        for (var i = 0; i &lt; movimentos.length; i++) {&#xd;
-            if (movimentos[i].IDMOV &amp;&amp; VerificaSeExisteMovimento(movimentos[i].IDMOV)) {&#xd;
-                cancelaMovimentos(movimentos[i].IDMOV);&#xd;
-            }&#xd;
-        }&#xd;
-    }&#xd;
-    EnviarEmailCancelamento();&#xd;
-}&#xd;
-&#xd;
-function cancelaMovimentos(RMidmov) {&#xd;
-    var hoje = new Date();&#xd;
-    var dia = hoje.getDate();&#xd;
-    var mes = hoje.getMonth() + 1;&#xd;
-    var ano = hoje.getFullYear();&#xd;
-    dia = dia.toString();&#xd;
-    mes = mes.toString();&#xd;
-    ano = ano.toString();&#xd;
-    if (mes.length == 1)&#xd;
-        mes = &quot;0&quot; + mes;&#xd;
-    if (dia.length == 1)&#xd;
-        dia = &quot;0&quot; + dia;&#xd;
-    ano = ano.toString();&#xd;
-    var dataCancelamento = ano + &quot;-&quot; + mes + &quot;-&quot; + dia + &quot;T00:00:00&quot;;&#xd;
-&#xd;
-    var retorno = DatasetFactory.getDataset(&quot;CancelaMovimentoRM&quot;, null, [&#xd;
-        DatasetFactory.createConstraint(&quot;pIdmov&quot;, RMidmov, RMidmov, ConstraintType.MUST),&#xd;
-        DatasetFactory.createConstraint(&quot;pCodcoligada&quot;, hAPI.getCardValue(&quot;coligada&quot;).split(&quot; - &quot;)[0], hAPI.getCardValue(&quot;coligada&quot;).split(&quot; - &quot;)[0], ConstraintType.MUST),&#xd;
-        DatasetFactory.createConstraint(&quot;pUsuarioRM&quot;, &quot;fluig&quot;, &quot;fluig&quot;, ConstraintType.MUST),&#xd;
-        DatasetFactory.createConstraint(&quot;pNumeromov&quot;, &quot;&quot;, &quot;&quot;, ConstraintType.MUST),&#xd;
-        DatasetFactory.createConstraint(&quot;pExercicioFiscal&quot;, &quot;&quot;, &quot;&quot;, ConstraintType.MUST),&#xd;
-        DatasetFactory.createConstraint(&quot;pDataCancelamento&quot;, dataCancelamento, dataCancelamento, ConstraintType.MUST),&#xd;
-        DatasetFactory.createConstraint(&quot;pCodtmv&quot;, hAPI.getCardValue(&quot;codtmv&quot;).split(&quot; - &quot;)[0], hAPI.getCardValue(&quot;codtmv&quot;).split(&quot; - &quot;)[0], ConstraintType.MUST),&#xd;
-        DatasetFactory.createConstraint(&quot;pProcessoFluig&quot;, hAPI.getCardValue(&apos;numProcess&apos;), hAPI.getCardValue(&apos;numProcess&apos;), ConstraintType.MUST)&#xd;
-    ], null);&#xd;
-&#xd;
-    if (!retorno || retorno == &quot;&quot; || retorno == null) {&#xd;
-        throw &quot;Houve um erro na comunicação com o webservice. Tente novamente!&quot;;&#xd;
-    }&#xd;
-    else {&#xd;
-        if (retorno.values[0][0] == &quot;false&quot;) {&#xd;
-            log.info(&quot;Erro ao cancelar o movimento. Favor entrar em contato com o administrador do sistema. Mensagem: &quot; + retorno.values[0][3]);&#xd;
-        }&#xd;
-        else {&#xd;
-            log.info(&quot;MOVIMENTO CANCELADO = &quot; + RMidmov);&#xd;
-            &#xd;
-        }&#xd;
-    }&#xd;
-}&#xd;
-&#xd;
-function VerificaSeExisteMovimento(IDMOV) {&#xd;
-    var ds = DatasetFactory.getDataset(&quot;ConsultaMovimentoRM&quot;, null, [&#xd;
-        DatasetFactory.createConstraint(&quot;pIdmov&quot;, IDMOV, IDMOV, ConstraintType.MUST),&#xd;
-        DatasetFactory.createConstraint(&quot;pCodcoligada&quot;, hAPI.getCardValue(&quot;coligada&quot;).split(&quot; - &quot;)[0], hAPI.getCardValue(&quot;coligada&quot;).split(&quot; - &quot;)[0], ConstraintType.MUST)&#xd;
-    ], null);&#xd;
-&#xd;
-&#xd;
-    if (ds.values &amp;&amp; ds.values.length &gt; 0) {&#xd;
-        return true;&#xd;
-    }&#xd;
-    else { return false; }&#xd;
-}&#xd;
-&#xd;
-function EnviarEmailCancelamento() {&#xd;
-    var usuarioAprovador = getValue(&quot;WKUser&quot;);&#xd;
-    var comprador = hAPI.getCardValue(&apos;userComprador&apos;);&#xd;
-    var solicitante = hAPI.getCardValue(&apos;solicitante&apos;);&#xd;
-    var decisao = hAPI.getCardValue(&quot;decisao&quot;);&#xd;
-    var codColigada = hAPI.getCardValue(&apos;coligada&apos;);&#xd;
-    var codFilial = hAPI.getCardValue(&apos;filial&apos;);&#xd;
-    var localEstoque = hAPI.getCardValue(&apos;locEstoque&apos;);&#xd;
-    var data = hAPI.getCardValue(&apos;dataEntrega&apos;);&#xd;
-    var tipoMov = hAPI.getCardValue(&apos;codtmv&apos;);&#xd;
-    var valor = FormataValorParaMoeda(CalculaTotalSolicitacao(), 2, true);&#xd;
-&#xd;
-    var urlProcesso = &apos;http://fluig.castilho.com.br:1010/portal/p/1/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID=&apos; + hAPI.getCardValue(&quot;numProcess&quot;);&#xd;
-    var subject = &apos;&apos;;&#xd;
-    var mensagem = &apos;&apos;;&#xd;
-&#xd;
-&#xd;
-    subject = &quot;[FLUIG] Pedido de compra cancelado!&quot;;&#xd;
-    mensagem = &apos;&lt;span class=&quot;glyphicon glyphicon-thumbs-down&quot;&gt;&lt;/span&gt; O pedido de compra que você realizou foi &lt;font color=&quot;red&quot;&gt;&lt;b&gt;cancelado&lt;/b&gt;&lt;/font&gt; pelo usuário &lt;b&gt;&apos; + usuarioAprovador + &apos;.&lt;/b&gt;&apos;;&#xd;
-&#xd;
-&#xd;
-    var param = new java.util.HashMap();&#xd;
-    param.put(&quot;SERVER_URL&quot;, &apos;http://fluig.castilho.com.br:1010&apos;);//Prod&#xd;
-    //param.put(&quot;SERVER_URL&quot;, &apos;http://homologacao.castilho.com.br:2020&apos;);//homolog&#xd;
-    param.put(&quot;TENANT_ID&quot;, &quot;1&quot;);&#xd;
-    param.put(&quot;USUARIO_APROVADOR&quot;, usuarioAprovador);&#xd;
-    param.put(&quot;COMPRADOR&quot;, comprador);&#xd;
-    param.put(&quot;SOLICITANTE&quot;, solicitante);&#xd;
-    param.put(&quot;COLIGADA&quot;, codColigada);&#xd;
-    param.put(&quot;FILIAL&quot;, codFilial);&#xd;
-    param.put(&quot;LOCALESTOQUE&quot;, localEstoque);&#xd;
-    param.put(&quot;DATA_CADASTRO&quot;, data);&#xd;
-    param.put(&quot;VALOR&quot;, valor);&#xd;
-    param.put(&quot;TIPOMOV&quot;, tipoMov);&#xd;
-    param.put(&quot;MENSAGEM&quot;, mensagem);&#xd;
-    param.put(&quot;URL&quot;, urlProcesso);&#xd;
-    param.put(&quot;subject&quot;, subject);&#xd;
-&#xd;
-    var destinatarios = new java.util.ArrayList();&#xd;
-&#xd;
-    if (solicitante != comprador) {&#xd;
-        destinatarios.add(solicitante);&#xd;
-        destinatarios.add(comprador);&#xd;
-    } else {&#xd;
-        destinatarios.add(solicitante);&#xd;
-    }&#xd;
-&#xd;
-    var anexos = new java.util.ArrayList();&#xd;
-    var docs = hAPI.listAttachments();&#xd;
-    for (var i = 0; i &lt; docs.size(); i++) {&#xd;
-        var doc = docs.get(i);&#xd;
-        var anexo = new java.util.HashMap();&#xd;
-&#xd;
-        anexo.put(&quot;link&quot;, fluigAPI.getDocumentService().getDownloadURL(doc.getDocumentId()));&#xd;
-        anexo.put(&quot;description&quot;, doc.getDocumentDescription());&#xd;
-&#xd;
-        anexos.add(anexo);&#xd;
-    }&#xd;
-&#xd;
-    param.put(&quot;anexos&quot;, anexos);&#xd;
-&#xd;
-    notifier.notify(&quot;FLUIG&quot;, &quot;TPL_APROVACAO_COMPRAS&quot;, param, destinatarios, &quot;text/html&quot;);&#xd;
+      <eventDescription>function beforeCancelProcess(colleagueId, processId) {
+    var movimentos = hAPI.getCardValue(&quot;movimentos&quot;);
+    if (movimentos != &quot;&quot;) {
+        movimentos = JSON.parse(movimentos);
+
+        for (var i = 0; i &lt; movimentos.length; i++) {
+            if (movimentos[i].IDMOV &amp;&amp; VerificaSeExisteMovimento(movimentos[i].IDMOV)) {
+                cancelaMovimentos(movimentos[i].IDMOV);
+            }
+        }
+    }
+    EnviarEmailCancelamento();
+}
+
+function cancelaMovimentos(RMidmov) {
+    var hoje = new Date();
+    var dia = hoje.getDate();
+    var mes = hoje.getMonth() + 1;
+    var ano = hoje.getFullYear();
+    dia = dia.toString();
+    mes = mes.toString();
+    ano = ano.toString();
+    if (mes.length == 1)
+        mes = &quot;0&quot; + mes;
+    if (dia.length == 1)
+        dia = &quot;0&quot; + dia;
+    ano = ano.toString();
+    var dataCancelamento = ano + &quot;-&quot; + mes + &quot;-&quot; + dia + &quot;T00:00:00&quot;;
+
+    var retorno = DatasetFactory.getDataset(&quot;CancelaMovimentoRM&quot;, null, [
+        DatasetFactory.createConstraint(&quot;pIdmov&quot;, RMidmov, RMidmov, ConstraintType.MUST),
+        DatasetFactory.createConstraint(&quot;pCodcoligada&quot;, hAPI.getCardValue(&quot;coligada&quot;).split(&quot; - &quot;)[0], hAPI.getCardValue(&quot;coligada&quot;).split(&quot; - &quot;)[0], ConstraintType.MUST),
+        DatasetFactory.createConstraint(&quot;pUsuarioRM&quot;, &quot;fluig&quot;, &quot;fluig&quot;, ConstraintType.MUST),
+        DatasetFactory.createConstraint(&quot;pNumeromov&quot;, &quot;&quot;, &quot;&quot;, ConstraintType.MUST),
+        DatasetFactory.createConstraint(&quot;pExercicioFiscal&quot;, &quot;&quot;, &quot;&quot;, ConstraintType.MUST),
+        DatasetFactory.createConstraint(&quot;pDataCancelamento&quot;, dataCancelamento, dataCancelamento, ConstraintType.MUST),
+        DatasetFactory.createConstraint(&quot;pCodtmv&quot;, hAPI.getCardValue(&quot;codtmv&quot;).split(&quot; - &quot;)[0], hAPI.getCardValue(&quot;codtmv&quot;).split(&quot; - &quot;)[0], ConstraintType.MUST),
+        DatasetFactory.createConstraint(&quot;pProcessoFluig&quot;, hAPI.getCardValue(&apos;numProcess&apos;), hAPI.getCardValue(&apos;numProcess&apos;), ConstraintType.MUST)
+    ], null);
+
+    if (!retorno || retorno == &quot;&quot; || retorno == null) {
+        throw &quot;Houve um erro na comunicação com o webservice. Tente novamente!&quot;;
+    }
+    else {
+        if (retorno.values[0][0] == &quot;false&quot;) {
+            log.info(&quot;Erro ao cancelar o movimento. Favor entrar em contato com o administrador do sistema. Mensagem: &quot; + retorno.values[0][3]);
+        }
+        else {
+            log.info(&quot;MOVIMENTO CANCELADO = &quot; + RMidmov);
+            
+        }
+    }
+}
+
+function VerificaSeExisteMovimento(IDMOV) {
+    var ds = DatasetFactory.getDataset(&quot;ConsultaMovimentoRM&quot;, null, [
+        DatasetFactory.createConstraint(&quot;pIdmov&quot;, IDMOV, IDMOV, ConstraintType.MUST),
+        DatasetFactory.createConstraint(&quot;pCodcoligada&quot;, hAPI.getCardValue(&quot;coligada&quot;).split(&quot; - &quot;)[0], hAPI.getCardValue(&quot;coligada&quot;).split(&quot; - &quot;)[0], ConstraintType.MUST)
+    ], null);
+
+
+    if (ds.values &amp;&amp; ds.values.length &gt; 0) {
+        return true;
+    }
+    else { return false; }
+}
+
+function EnviarEmailCancelamento() {
+    var usuarioAprovador = getValue(&quot;WKUser&quot;);
+    var comprador = hAPI.getCardValue(&apos;userComprador&apos;);
+    var solicitante = hAPI.getCardValue(&apos;solicitante&apos;);
+    var decisao = hAPI.getCardValue(&quot;decisao&quot;);
+    var codColigada = hAPI.getCardValue(&apos;coligada&apos;);
+    var codFilial = hAPI.getCardValue(&apos;filial&apos;);
+    var localEstoque = hAPI.getCardValue(&apos;locEstoque&apos;);
+    var data = hAPI.getCardValue(&apos;dataEntrega&apos;);
+    var tipoMov = hAPI.getCardValue(&apos;codtmv&apos;);
+    var valor = FormataValorParaMoeda(CalculaTotalSolicitacao(), 2, true);
+
+    var urlProcesso = &apos;http://fluig.castilho.com.br:1010/portal/p/1/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID=&apos; + hAPI.getCardValue(&quot;numProcess&quot;);
+    var subject = &apos;&apos;;
+    var mensagem = &apos;&apos;;
+
+
+    subject = &quot;[FLUIG] Pedido de compra cancelado!&quot;;
+    mensagem = &apos;&lt;span class=&quot;glyphicon glyphicon-thumbs-down&quot;&gt;&lt;/span&gt; O pedido de compra que você realizou foi &lt;font color=&quot;red&quot;&gt;&lt;b&gt;cancelado&lt;/b&gt;&lt;/font&gt; pelo usuário &lt;b&gt;&apos; + usuarioAprovador + &apos;.&lt;/b&gt;&apos;;
+
+
+    var param = new java.util.HashMap();
+    param.put(&quot;SERVER_URL&quot;, &apos;http://fluig.castilho.com.br:1010&apos;);//Prod
+    //param.put(&quot;SERVER_URL&quot;, &apos;http://homologacao.castilho.com.br:2020&apos;);//homolog
+    param.put(&quot;TENANT_ID&quot;, &quot;1&quot;);
+    param.put(&quot;USUARIO_APROVADOR&quot;, usuarioAprovador);
+    param.put(&quot;COMPRADOR&quot;, comprador);
+    param.put(&quot;SOLICITANTE&quot;, solicitante);
+    param.put(&quot;COLIGADA&quot;, codColigada);
+    param.put(&quot;FILIAL&quot;, codFilial);
+    param.put(&quot;LOCALESTOQUE&quot;, localEstoque);
+    param.put(&quot;DATA_CADASTRO&quot;, data);
+    param.put(&quot;VALOR&quot;, valor);
+    param.put(&quot;TIPOMOV&quot;, tipoMov);
+    param.put(&quot;MENSAGEM&quot;, mensagem);
+    param.put(&quot;URL&quot;, urlProcesso);
+    param.put(&quot;subject&quot;, subject);
+
+    var destinatarios = new java.util.ArrayList();
+
+    if (solicitante != comprador) {
+        destinatarios.add(solicitante);
+        destinatarios.add(comprador);
+    } else {
+        destinatarios.add(solicitante);
+    }
+
+    var anexos = new java.util.ArrayList();
+    var docs = hAPI.listAttachments();
+    for (var i = 0; i &lt; docs.size(); i++) {
+        var doc = docs.get(i);
+        var anexo = new java.util.HashMap();
+
+        anexo.put(&quot;link&quot;, fluigAPI.getDocumentService().getDownloadURL(doc.getDocumentId()));
+        anexo.put(&quot;description&quot;, doc.getDocumentDescription());
+
+        anexos.add(anexo);
+    }
+
+    param.put(&quot;anexos&quot;, anexos);
+
+    notifier.notify(&quot;FLUIG&quot;, &quot;TPL_APROVACAO_COMPRAS&quot;, param, destinatarios, &quot;text/html&quot;);
 }</eventDescription>
     </WorkflowProcessEvent>
     <WorkflowProcessEvent>
@@ -2080,22 +2125,6 @@ function FormataValorString(valor)&#xd;
   <list/>
   <list>
     <SwimLane>
-      <color>d0daae</color>
-      <height>228</height>
-      <width>1381</width>
-      <positionX>0</positionX>
-      <positionY>323</positionY>
-      <stateName>SwimLane</stateName>
-      <type>2</type>
-      <parentSequence>0</parentSequence>
-      <swimLanePK>
-        <companyId>1</companyId>
-        <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>1</version>
-        <sequence>1</sequence>
-      </swimLanePK>
-    </SwimLane>
-    <SwimLane>
       <color>adc9ac</color>
       <height>145</height>
       <width>1381</width>
@@ -2108,11 +2137,27 @@ function FormataValorString(valor)&#xd;
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>d0daae</color>
+      <height>228</height>
+      <width>1381</width>
+      <positionX>0</positionX>
+      <positionY>323</positionY>
+      <stateName>SwimLane</stateName>
+      <type>2</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>Solicitação de Compras e Serviços NOVO</processId>
+        <version>1</version>
         <sequence>2</sequence>
       </swimLanePK>
     </SwimLane>
     <SwimLane>
-      <color>FF3939</color>
+      <color>82b0b7</color>
       <height>145</height>
       <width>1381</width>
       <positionX>0</positionX>
@@ -2135,7 +2180,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>36</version>
+        <version>41</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2146,7 +2191,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>36</version>
+        <version>41</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2157,7 +2202,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>36</version>
+        <version>41</version>
         <linkSequence>8</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2168,7 +2213,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>36</version>
+        <version>41</version>
         <linkSequence>8</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -2179,7 +2224,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>36</version>
+        <version>41</version>
         <linkSequence>16</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2190,7 +2235,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>36</version>
+        <version>41</version>
         <linkSequence>37</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2201,7 +2246,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>36</version>
+        <version>41</version>
         <linkSequence>37</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2212,7 +2257,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>36</version>
+        <version>41</version>
         <linkSequence>38</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2223,7 +2268,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>36</version>
+        <version>41</version>
         <linkSequence>38</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2234,7 +2279,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>36</version>
+        <version>41</version>
         <linkSequence>39</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2245,7 +2290,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>36</version>
+        <version>41</version>
         <linkSequence>39</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2256,7 +2301,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>36</version>
+        <version>41</version>
         <linkSequence>40</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2267,7 +2312,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>36</version>
+        <version>41</version>
         <linkSequence>40</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2282,46 +2327,19 @@ function FormataValorString(valor)&#xd;
       <processFormFieldPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <fieldId>codtmv</fieldId>
+        <fieldId>coligada</fieldId>
       </processFormFieldPK>
-      <fieldDescription>CODTMV</fieldDescription>
+      <fieldDescription>Coligada</fieldDescription>
       <slotId>1</slotId>
     </ProcessFormField>
     <ProcessFormField>
       <processFormFieldPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <fieldId>coligada</fieldId>
+        <fieldId>codtmv</fieldId>
       </processFormFieldPK>
-      <fieldDescription>Coligada</fieldDescription>
+      <fieldDescription>CODTMV</fieldDescription>
       <slotId>2</slotId>
-    </ProcessFormField>
-    <ProcessFormField>
-      <processFormFieldPK>
-        <companyId>1</companyId>
-        <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <fieldId>comprador</fieldId>
-      </processFormFieldPK>
-      <fieldDescription>Compras Matriz/Obra</fieldDescription>
-      <slotId>3</slotId>
-    </ProcessFormField>
-    <ProcessFormField>
-      <processFormFieldPK>
-        <companyId>1</companyId>
-        <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <fieldId>condicaoPgto</fieldId>
-      </processFormFieldPK>
-      <fieldDescription>condicaoPgto</fieldDescription>
-      <slotId>4</slotId>
-    </ProcessFormField>
-    <ProcessFormField>
-      <processFormFieldPK>
-        <companyId>1</companyId>
-        <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <fieldId>dataEntrega</fieldId>
-      </processFormFieldPK>
-      <fieldDescription>Data de Entrega</fieldDescription>
-      <slotId>5</slotId>
     </ProcessFormField>
     <ProcessFormField>
       <processFormFieldPK>
@@ -2330,34 +2348,7 @@ function FormataValorString(valor)&#xd;
         <fieldId>filial</fieldId>
       </processFormFieldPK>
       <fieldDescription>Filial</fieldDescription>
-      <slotId>6</slotId>
-    </ProcessFormField>
-    <ProcessFormField>
-      <processFormFieldPK>
-        <companyId>1</companyId>
-        <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <fieldId>formaPgto</fieldId>
-      </processFormFieldPK>
-      <fieldDescription>formaPgto</fieldDescription>
-      <slotId>7</slotId>
-    </ProcessFormField>
-    <ProcessFormField>
-      <processFormFieldPK>
-        <companyId>1</companyId>
-        <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <fieldId>locEntrega</fieldId>
-      </processFormFieldPK>
-      <fieldDescription>locEntrega</fieldDescription>
-      <slotId>8</slotId>
-    </ProcessFormField>
-    <ProcessFormField>
-      <processFormFieldPK>
-        <companyId>1</companyId>
-        <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <fieldId>locEntrega2</fieldId>
-      </processFormFieldPK>
-      <fieldDescription>locEntrega2</fieldDescription>
-      <slotId>9</slotId>
+      <slotId>3</slotId>
     </ProcessFormField>
     <ProcessFormField>
       <processFormFieldPK>
@@ -2366,6 +2357,60 @@ function FormataValorString(valor)&#xd;
         <fieldId>locEstoque</fieldId>
       </processFormFieldPK>
       <fieldDescription>Local de Estoque</fieldDescription>
+      <slotId>4</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>Solicitação de Compras e Serviços NOVO</processId>
+        <fieldId>comprador</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>Compras Matriz/Obra</fieldDescription>
+      <slotId>5</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>Solicitação de Compras e Serviços NOVO</processId>
+        <fieldId>dataEntrega</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>Data de Entrega</fieldDescription>
+      <slotId>6</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>Solicitação de Compras e Serviços NOVO</processId>
+        <fieldId>condicaoPgto</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>condicaoPgto</fieldDescription>
+      <slotId>7</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>Solicitação de Compras e Serviços NOVO</processId>
+        <fieldId>formaPgto</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>formaPgto</fieldDescription>
+      <slotId>8</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>Solicitação de Compras e Serviços NOVO</processId>
+        <fieldId>locEntrega</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>locEntrega</fieldDescription>
+      <slotId>9</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>Solicitação de Compras e Serviços NOVO</processId>
+        <fieldId>locEntrega2</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>locEntrega2</fieldDescription>
       <slotId>10</slotId>
     </ProcessFormField>
     <ProcessFormField>
