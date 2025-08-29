@@ -29,7 +29,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Solicitação de Compras e Serviços (NOVO)</processId>
-      <version>41</version>
+      <version>49</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>604119</formId>
@@ -630,7 +630,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>1</expressionOrder>
-        <version>41</version>
+        <version>49</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -643,7 +643,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>2</expressionOrder>
-        <version>41</version>
+        <version>49</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -656,7 +656,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>3</expressionOrder>
-        <version>41</version>
+        <version>49</version>
         <sequence>7</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -670,7 +670,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>1</expressionOrder>
-        <version>41</version>
+        <version>49</version>
         <sequence>17</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -683,7 +683,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>2</expressionOrder>
-        <version>41</version>
+        <version>49</version>
         <sequence>17</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -696,7 +696,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>1</expressionOrder>
-        <version>41</version>
+        <version>49</version>
         <sequence>18</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -709,7 +709,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>2</expressionOrder>
-        <version>41</version>
+        <version>49</version>
         <sequence>18</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -722,7 +722,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>3</expressionOrder>
-        <version>41</version>
+        <version>49</version>
         <sequence>18</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -735,7 +735,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>1</expressionOrder>
-        <version>41</version>
+        <version>49</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -748,7 +748,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>2</expressionOrder>
-        <version>41</version>
+        <version>49</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -761,7 +761,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>3</expressionOrder>
-        <version>41</version>
+        <version>49</version>
         <sequence>19</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -774,7 +774,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>1</expressionOrder>
-        <version>41</version>
+        <version>49</version>
         <sequence>20</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -787,7 +787,7 @@
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
         <expressionOrder>2</expressionOrder>
-        <version>41</version>
+        <version>49</version>
         <sequence>20</sequence>
       </conditionProcessStatePK>
       <condition>false</condition>
@@ -1337,8 +1337,8 @@ function EnviarEmail() {
 
     var destinatarios = &quot;&quot;;
 	if (solicitante != comprador) {
-		destinatarios += BuscaEmailUsuario(solicitante)+&quot;; &quot;;
-		destinatarios += BuscaEmailUsuario(comprador)+&quot;; &quot;;
+		destinatarios += BuscaEmailUsuario(solicitante);
+		destinatarios += BuscaEmailUsuario(comprador);
 	} else {
 		destinatarios += BuscaEmailUsuario(solicitante);
 	}
@@ -1357,18 +1357,11 @@ function EnviarEmail() {
     var clientService = fluigAPI.getAuthorizeClientService();
     var data = {
         companyId: getValue(&quot;WKCompany&quot;) + &apos;&apos;,
-        serviceCode: &apos;ServicoFluig&apos;,
+        serviceCode: &apos;FluigREST&apos;,
         endpoint: &apos;/api/public/alert/customEmailSender&apos;,
         method: &apos;post&apos;,
+        timeoutService: &apos;100&apos;,
         params: data,
-        options: {
-            encoding: &apos;UTF-8&apos;,
-            mediaType: &apos;application/json&apos;,
-            useSSL: true
-        },
-        headers: {
-            &quot;Content-Type&quot;: &apos;application/json;charset=UTF-8&apos;
-        }
     };
 
 
@@ -2180,7 +2173,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>41</version>
+        <version>49</version>
         <linkSequence>6</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2191,7 +2184,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>41</version>
+        <version>49</version>
         <linkSequence>8</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2202,7 +2195,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>41</version>
+        <version>49</version>
         <linkSequence>8</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2213,7 +2206,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>41</version>
+        <version>49</version>
         <linkSequence>8</linkSequence>
         <bendSequence>3</bendSequence>
       </processLinkBendPK>
@@ -2224,7 +2217,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>41</version>
+        <version>49</version>
         <linkSequence>16</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2235,7 +2228,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>41</version>
+        <version>49</version>
         <linkSequence>37</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2246,7 +2239,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>41</version>
+        <version>49</version>
         <linkSequence>37</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2257,7 +2250,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>41</version>
+        <version>49</version>
         <linkSequence>38</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2268,7 +2261,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>41</version>
+        <version>49</version>
         <linkSequence>38</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2279,7 +2272,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>41</version>
+        <version>49</version>
         <linkSequence>39</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2290,7 +2283,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>41</version>
+        <version>49</version>
         <linkSequence>39</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -2301,7 +2294,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>41</version>
+        <version>49</version>
         <linkSequence>40</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -2312,7 +2305,7 @@ function FormataValorString(valor)&#xd;
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>Solicitação de Compras e Serviços NOVO</processId>
-        <version>41</version>
+        <version>49</version>
         <linkSequence>40</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
