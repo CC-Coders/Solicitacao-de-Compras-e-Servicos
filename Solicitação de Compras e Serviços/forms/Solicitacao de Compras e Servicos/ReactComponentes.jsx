@@ -984,6 +984,7 @@ class AppRoot extends React.Component {
             ["CODCFO", "NOME", "CGCCFO"],
             [
                 DatasetFactory.createConstraint("CODCOLIGADA", 0, 0, ConstraintType.SHOULD),
+                DatasetFactory.createConstraint("CODCOLIGADA", 1, 1, ConstraintType.SHOULD),
                 DatasetFactory.createConstraint("CODCOLIGADA", $("#coligada").val().split(" - ")[0], $("#coligada").val().split(" - ")[0], ConstraintType.SHOULD),
                 DatasetFactory.createConstraint("ATIVO", 1, 1, ConstraintType.MUST)
             ],
