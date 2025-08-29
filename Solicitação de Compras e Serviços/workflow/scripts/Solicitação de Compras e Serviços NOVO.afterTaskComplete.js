@@ -125,8 +125,8 @@ function EnviarEmail() {
 
     var destinatarios = "";
 	if (solicitante != comprador) {
-		destinatarios += BuscaEmailUsuario(solicitante)+"; ";
-		destinatarios += BuscaEmailUsuario(comprador)+"; ";
+		destinatarios += BuscaEmailUsuario(solicitante);
+		destinatarios += BuscaEmailUsuario(comprador);
 	} else {
 		destinatarios += BuscaEmailUsuario(solicitante);
 	}
@@ -145,18 +145,11 @@ function EnviarEmail() {
     var clientService = fluigAPI.getAuthorizeClientService();
     var data = {
         companyId: getValue("WKCompany") + '',
-        serviceCode: 'ServicoFluig',
+        serviceCode: 'FluigREST',
         endpoint: '/api/public/alert/customEmailSender',
         method: 'post',
+        timeoutService: '100',
         params: data,
-        options: {
-            encoding: 'UTF-8',
-            mediaType: 'application/json',
-            useSSL: true
-        },
-        headers: {
-            "Content-Type": 'application/json;charset=UTF-8'
-        }
     };
 
 
